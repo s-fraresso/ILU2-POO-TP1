@@ -1,7 +1,5 @@
 package villagegaulois;
 
-import java.util.Iterator;
-
 import personnages.Chef;
 import personnages.Gaulois;
 
@@ -165,7 +163,11 @@ public class Village {
 		return chaine.toString();
 	}
 
-	public String afficherVillageois() {
+	public String afficherVillageois() throws VillageSansChefException {
+		if (chef == null) {
+			throw new VillageSansChefException("Le village n'a pas de chef.");
+		}
+		
 		StringBuilder chaine = new StringBuilder();
 		if (nbVillageois < 1) {
 			chaine.append("Il n'y a encore aucun habitant au village du chef "
